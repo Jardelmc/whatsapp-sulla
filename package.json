@@ -1,0 +1,53 @@
+{
+  "name": "sulla-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "build": "tsc && npm run build:middleware && npm run build:lib",
+    "build:lib": "ts-node prebuild.ts",
+    "build:middleware": "tsc --out src/lib/middleware.js src/middleware/middleware.ts --module amd",
+    "watch": "npm run build && tsc-watch ./src/index.ts --outDir ./dist --onSuccess \"node ./dist/index.js\" --onFailure \"echo Error while compiling\" --compiler typescript/bin/tsc",
+    "clean": "rm -rf session && rm -rf dist",
+    "clean:full": "rm -rf node_modules && npm run clean",
+    "precise-commits": "precise-commits",
+    "test": "echo \"No tests yet\"",
+    "debug": "node --inspect -r sucrase/register src/server.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "ora": "^3.4.0",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.3",
+    "puppeteer": "^1.19.0",
+    "qrcode-terminal": "^0.12.0",
+    "request": "^2.88.0",
+    "rxjs": "^6.5.2",
+    "sequelize": "^5.8.12",
+    "shelljs": "^0.8.3",
+    "sulla": "^1.1.1",
+    "sulla-hotfix": "^1.2.3",
+    "xlsx": "^0.15.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.0",
+    "@types/puppeteer": "^1.19.0",
+    "@types/shelljs": "^0.8.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.2",
+    "nodemon": "^1.19.1",
+    "precise-commits": "^1.0.2",
+    "prettier": "^1.18.2",
+    "sequelize-cli": "^5.5.0",
+    "sucrase": "^3.10.1",
+    "ts-node": "^8.3.0",
+    "tsc-watch": "^2.4.0",
+    "typescript": "^3.5.1"
+  }
+}
