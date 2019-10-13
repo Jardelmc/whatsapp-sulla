@@ -1,3 +1,5 @@
+import toDoOnMessage from '../services/OnMessageService';
+
 const sulla = require('sulla-hotfix');
 
 let clientBot;
@@ -7,9 +9,7 @@ class CreateInstanceController {
     clientBot = await sulla.create(); // .then(client => sendText(client));
 
     clientBot.onMessage(message => {
-      if (message.body === 'Hi') {
-        clientBot.sendText(message.from, '👋 Hello from sulla!');
-      }
+      toDoOnMessage(message, clientBot);
     });
 
     return res.json({ message: 'Ok' });
