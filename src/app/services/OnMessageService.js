@@ -21,7 +21,7 @@ async function interpretMessage(user, message, clientBot) {
   if (comparingLastTime > 5) {
     clientBot.sendText(
       message.from,
-      'Olá, que tipo de mensagem você quer enviar? Para mensagem de texto, responda: 1  Para mensagem de imagem, responda: 2'
+      ` Olá, que tipo de mensagem você quer enviar?\n\n1. Texto\n2. Imagem\n\nResponda com: 1 ou 2 `
     );
 
     userMessage = {
@@ -39,7 +39,10 @@ async function interpretMessage(user, message, clientBot) {
 
   // Para mensagens de texto
   if (message.body === '1') {
-    clientBot.sendText(message.from, 'Envie a mensagem que você quer disparar');
+    clientBot.sendText(
+      message.from,
+      `Me envie a mensagem que você quer disparar.\nBasta escrever ou colar uma mensagem pronta e ela será enviara para todos os contatos cadastrados`
+    );
 
     userMessage = {
       text: message.body,

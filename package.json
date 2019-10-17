@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "sucrase-node src/server.js",
     "dev": "nodemon src/server.js",
     "build": "tsc && npm run build:middleware && npm run build:lib",
     "build:lib": "ts-node prebuild.ts",

@@ -2,14 +2,18 @@
 function getFristName(name) {
   const fristName = name.split(' ');
   const tempName = fristName[0].toLowerCase();
-  const nameCapitalized = tempName.charAt(0).toUpperCase() + tempName.slice(1);
 
+  if (tempName.includes('*') || tempName.length < 3) {
+    return '';
+  }
+
+  const nameCapitalized = tempName.charAt(0).toUpperCase() + tempName.slice(1);
   return nameCapitalized;
 }
 
 function convertMessage(name, message) {
   const messageWithName = message.replace('NOME', getFristName(name));
-  //  messageWithName = messageWithName.replace(/\\n/gi, '\n');
+
   return messageWithName;
 }
 

@@ -1,15 +1,20 @@
 import UserController from './app/controllers/UserController';
 import CreateInstanceController from './app/controllers/CreateInstanceController';
 
-import BaseContactsMongo from './app/schemas/BaseContactsMongo';
-
-// import Start from './indexa';
-// import { getCsvInfos } from './app/csv_resource/CsvCaseTaps';
-
 const { Router } = require('express');
 
 const routes = new Router();
 
+// Rota para criar novo usuário
+routes.post('/user/new', UserController.store);
+
+// Rota para iniciar bot
+routes.post('/init', CreateInstanceController.init);
+
+export default routes;
+
+/**
+ *
 routes.get('/', (req, res) => {
   const migration = [];
 
@@ -25,15 +30,5 @@ routes.get('/', (req, res) => {
   BaseContactsMongo.create(newRegister);
   return res.json({ m: 'ok' });
 });
-/*
-routes.get('/sendList', Start.sendManyMessages);
 
-routes.get('/csv', getCsvInfos);
-*/
-// Rota para criar novo usuário
-routes.post('/user/new', UserController.store);
-
-// Rota para iniciar bot
-routes.post('/init', CreateInstanceController.init);
-
-export default routes;
+ */
